@@ -1,5 +1,13 @@
 <!doctype html>
 <html lang="fr"><head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M8G4VQM8');</script>
+<!-- End Google Tag Manager -->
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#17384c">
@@ -332,9 +340,20 @@ details p{margin:.5rem 0 0}
  }
 }
 #fuite-eau,#debouchage{scroll-margin-top:6rem}
+
+/* Bouton d'appel flottant : visible sur ordinateur et mobile */
+.mobile-call{display:block;position:fixed;right:1.25rem;bottom:1.25rem;left:auto;top:auto;z-index:20;width:auto;padding:0;background:transparent}
+.mobile-call .call{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:56px;margin:0;padding:.85rem 1.25rem;border:0;border-radius:999px;background:linear-gradient(180deg,#f0443e,#e52e2e);color:#fff;text-decoration:none;font-size:1.05rem;font-weight:850;line-height:1.2;letter-spacing:.015em;box-shadow:0 8px 24px #b7122740,inset 0 1px 0 #ffffff55}
+.mobile-call .call:hover{background:linear-gradient(180deg,#e63832,#ce2027);color:#fff}
+.mobile-call .phone-symbol{font-size:1.15rem;line-height:1}
+@media(max-width:690px){.mobile-call{right:.8rem;bottom:calc(.8rem + env(safe-area-inset-bottom));left:auto;padding:0}.mobile-call .call{min-height:52px;padding:.78rem 1rem;font-size:.96rem;gap:.45rem}.mobile-call .call-number{display:inline;margin:0;font-size:.92rem;white-space:nowrap}}
+@media(max-width:355px){.mobile-call{right:.55rem;bottom:calc(.55rem + env(safe-area-inset-bottom))}.mobile-call .call{min-height:48px;padding:.65rem .8rem;font-size:.88rem}.mobile-call .call-number{display:inline;margin:0;font-size:.82rem}}
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M8G4VQM8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="site-header">
 <div class="wrap header">
@@ -441,43 +460,5 @@ details p{margin:.5rem 0 0}
 </footer>
 <div class="mobile-call"><a class="call" href="tel:0756930370" aria-label="Appeler Léon &amp; Fils Plomberie au 07 56 93 03 70"><span class="phone-symbol" aria-hidden="true">📞</span><span>07 56 93 03 70</span></a></div>
 
-<!-- Google Ads : appels depuis le site -->
-<script>
-(() => {
-  const tagId = 'AW-18595459512';
-  const websiteCallAction = tagId + '/JZLtCPD-s78dELjjgKNF';
-  const businessPhone = '07 56 93 03 70';
-  const phoneLinks = document.querySelectorAll('a[href="tel:0756930370"]');
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { window.dataLayer.push(arguments); }
-
-  gtag('js', new Date());
-  gtag('config', tagId, { allow_ad_personalization_signals: false });
-  gtag('config', websiteCallAction, {
-    phone_conversion_number: businessPhone,
-    phone_conversion_callback(formatted, numberForLink) {
-      if (typeof formatted !== 'string' || !/^\+?\d{8,15}$/.test(numberForLink)) return;
-
-      phoneLinks.forEach(link => {
-        link.setAttribute('href', 'tel:' + numberForLink);
-        const label = link.getAttribute('aria-label');
-        if (label) link.setAttribute('aria-label', label.replace(businessPhone, formatted));
-
-        const walker = document.createTreeWalker(link, NodeFilter.SHOW_TEXT);
-        while (walker.nextNode()) {
-          const node = walker.currentNode;
-          node.nodeValue = node.nodeValue.replace(businessPhone, formatted);
-        }
-      });
-    }
-  });
-
-  const tag = document.createElement('script');
-  tag.async = true;
-  tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + tagId;
-  document.head.appendChild(tag);
-})();
-</script>
 </body>
 </html>
